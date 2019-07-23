@@ -1,0 +1,55 @@
+#example {
+  margin-bottom:0;
+}
+
+#but1 {
+  border-radius:26px;
+  border:3px solid #ef4040;
+}
+
+#but1:hover {
+  background-color:red;
+  color:white;
+}
+
+#but1 {
+  -webkit-transition-duration:0.4s;
+  transition-duration:0.4s;
+  cursor:pointer;
+}
+
+#but1:hover {
+  background-color:red;
+  color:white;
+}
+
+#table1 {
+  border-radius:4px;
+}
+
+#table0 {
+  border-radius:4px;
+}
+
+.navbar.navbar-light.navbar-expand-md.fixed-top {
+  box-shadow:0px 1px 1px rgba(125,125,125,0.15);
+}
+
+.box {
+  box-shadow:1px 1px 1px rgba(0,0,0,0.22);
+}
+
+#hapus {
+  border:3px solid rgb(238,24,24);
+  border-radius:25px;
+  color:rgb(238,24,24);
+}
+
+#table3 {
+  border-radius:4px;
+}
+
+#pindahbox {
+  border-radius:4px;
+}
+

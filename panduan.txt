@@ -1,0 +1,14 @@
+1. Hilangkan index.php
+    a. buat file ".htaccess" isinya
+    b. RewriteEngine On
+    c. RewriteCond %{REQUEST_FILENAME} !-f
+    d. RewriteCond %{REQUEST_FILENAME} !-d
+    e. RewriteRule ^(.*)$ index.php/$1 [L]
+2. Edit alamat url di application > config > config.php
+    a. ubah alamat sesuai url
+    b. index.php dihapus di line 38
+3. Folder controller, buat file baru nama kapital huruf awal sesuai dengan class (Home.php)
+    a. buat method default ( public function )
+4. buka config > routes.php
+    a. line 52 ubah jadi nama class (home)
+    
