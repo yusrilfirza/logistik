@@ -20,7 +20,7 @@ class Data extends CI_Controller {
         }
         else 
         {
-            $this->Logistik_model->aa();
+            // $this->Logistik_model->aa();
             redirect('home');
         }
     }
