@@ -19,19 +19,23 @@
                                 <tr>
                                     <?php
                                     foreach($peminjaman as $pinjam):
-                                        if($pinjam['sts'] == '0')
+                                        if($pinjam['sts'] == 0)
                                         {
                                             $ket = 'Ajuan Ditolak';
                                         }
-                                        if($pinjam['sts'] == '1')
+                                        if($pinjam['sts'] == 1)
                                         {
                                             $ket = 'Pengajuan';
                                         }
-                                        if($pinjam['sts'] == '2')
+                                        if($pinjam['sts'] == 2)
                                         {
                                             $ket = 'Disetujui';
                                         }
-                                        if($pinjam['sts'] == '3')
+                                        if($pinjam['sts'] == 3)
+                                        {
+                                            $ket = 'Terpinjam';
+                                        }
+                                        if($pinjam['sts'] == 4)
                                         {
                                             $ket = 'Dikembalikan';
                                         }

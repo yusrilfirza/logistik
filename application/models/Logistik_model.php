@@ -15,11 +15,29 @@ class Logistik_model extends CI_model {
         $query = $this->db->get('kodebarang');
         return $query->result_array();
     }
+
+    public function getKodeMtp(){
+        $query = $this->db->get('kode_akun');
+        return $query->result_array();
+    }
+    
+    public function getKodeTempat(){
+        $query = $this->db->get('kodetempat');
+        return $query->result_array();
+    }
+    
+    public function getKodeUnit(){
+        $query = $this->db->get('kodeunit');
+        return $query->result_array();
+    }
     
     public function tambahBarang(){
         $nambar = $this->input->post('nama_barang',true);
         $explode = explode('_',$nambar);
         $nabar = $explode[0];
+        $this->db->where('nama_barang', $nabar);
+        $ngurut = $this->db->get('barang');
+        $no_urut = $ngurut->result_array();
         $tgl = $this->input->post('tgl_beli', true);
             if ($tgl == null)
             {
@@ -29,29 +47,41 @@ class Logistik_model extends CI_model {
             {
                 $tahun_beli = $tgl[2].$tgl[3];
             }
-        $lokasi = htmlspecialchars($this->input->post('kode_lokasi', true));
-        $unit = htmlspecialchars($this->input->post('nama_unit', true));
-        $urut = htmlspecialchars($this->input->post('nomor_urut', true));
-        $mtp = htmlspecialchars($this->input->post('nomor_mtp', true));
+        $tpt = htmlspecialchars($this->input->post('tempat', true));
+        $tempat = explode('_', $tpt);
+        $lokasi = $tempat[1];
+
+        $nama_unit = htmlspecialchars($this->input->post('unit', true));
+        $nama_unit2 = explode('_', $nama_unit);
+        $unit = $nama_unit2[1];
+
+        $urut = sprintf("%03d", count($no_urut)+1);
+
+        $akun = htmlspecialchars($this->input->post('akun', true));
+        $akun2 = explode('_', $akun);
+        $mtp = $akun2[1];
 
         $inven = $lokasi.$unit.$tahun_beli.$explode[1].$urut.$mtp;
 
         $data = [
-            "tempat" => htmlspecialchars($this->input->post('tempat', true)),
-            "kode_lokasi" => htmlspecialchars($this->input->post('kode_lokasi', true)),
-            "nama_unit" => htmlspecialchars($this->input->post('nama_unit', true)),
+            "tempat" => $tempat[0],
+            "kode_lokasi" => $tempat[1],
+            "nama_unit" => $nama_unit2[0],
+            "kode_unit" => $unit,
             "kode_barang" => $explode[1],
-            "nomor_urut" => htmlspecialchars($this->input->post('nomor_urut', true)),
-            "nomor_mtp" => htmlspecialchars($this->input->post('nomor_mtp', true)),
+            "nomor_urut" => $urut,
+            "nomor_mtp" => $mtp,
             "nama_barang" => $nabar,
             "nilai_barang" => htmlspecialchars($this->input->post('nilai_barang', true)),
             "tgl_beli" => htmlspecialchars($this->input->post('tgl_beli', true)),
             "kondisi" => htmlspecialchars($this->input->post('kondisi', true)),
             "spesifikasi" => htmlspecialchars($this->input->post('spesifikasi', true)),
             "kode_tahun" => $tahun_beli,
-            "kode_inventaris" => $inven
+            "kode_inventaris" => $inven,
+            "nama_akun" => $akun2[0]
         ];
         $this->db->insert('barang', $data);
+        return $no_urut;
     }
     
     public function tambahKode(){
@@ -155,7 +185,7 @@ class Logistik_model extends CI_model {
                 $sts = (int)$h['sts']+1;
             }
             else{
-                $sts = 0;
+                $sts = '0';
             }
         }
         $data = [
@@ -217,5 +247,65 @@ class Logistik_model extends CI_model {
             $this->session->set_flashdata('user', 'Username salah');
             redirect('login');
         }
+    }
+
+    public function aa()
+    {
+
+        $i=0;
+        foreach ($data as $row)
+        {
+            $this->db->where('kode_lokasi', $data5[$i]);
+            $query = $this->db->get('kodetempat');
+            $hasil = $query->result_array();
+            $tempat = '';
+            if($data5[$i]=='4FO')
+            {
+                $tempat='Fiber Optik';
+            }
+            if($data5[$i]=='401')
+            {
+                $tempat='Ruangan 401';
+            }
+            if($data5[$i]=='4GR')
+            {
+                $tempat = 'Graphic Room';
+            }
+            else
+            {
+                foreach($hasil as $h)
+                {
+                    $tempat=$h['lokasi'];
+                }
+            }
+            if($data10[$i]=='101')
+            {
+                $data3[$i]="PC";
+            }
+            if($data10[$i]=='160')
+            {
+                $data3[$i]="MIC";
+            }
+            if($data10[$i]=='224')
+            {
+                $data3[$i]="CCTV";
+            }
+            $this->db->where('kode_lokasi', $data5[$i]);
+            $this->db->insert("barang", array(
+                // 'kode_barang'=>$row, 
+                'nomor_urut'=>$data2[$i],
+                'nama_barang'=>$data3[$i],
+                'spesifikasi'=>$data4[$i],
+                'kode_lokasi'=>$data5[$i],
+                'kode_unit'=>$data6[$i],
+                'kode_tahun'=>$data7[$i],
+                'kode_inventaris'=>$data8[$i],
+                'nomor_mtp'=>$data9[$i],
+                'tempat'=>$tempat,
+                'kode_barang'=>$data10[$i]
+                ));
+            $i=$i+1;
+        }
+        return $hasil;
     }
 }

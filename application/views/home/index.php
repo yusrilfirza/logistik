@@ -53,7 +53,7 @@
                 <div class="form-group">
                     <div class="table-responsive" style="padding:0px;">
                         <table class="table table-striped" id="table_id1">
-                            <thead>
+                            <thead style="background-color: #a3a3a3">
                                 <tr>
                                     <th style="width:132px;">Kode Inventaris</th>
                                     <th>Nama Barang</th>
@@ -62,7 +62,7 @@
                                     <th>Lokasi</th>
                                 </tr>
                             </thead>
-                            <tbody> <?php   $i = 0;
+                            <tbody style="background-color: #ededed;"> <?php   $i = 0;
                                             foreach($logistik as $log) : 
                                                 if($log['kode_inventaris'] != null)
                                                 {

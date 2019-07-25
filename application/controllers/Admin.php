@@ -15,6 +15,9 @@ class Admin extends CI_Controller {
             $data['logistik'] = $this->Logistik_model->getAllLogistik();
             $data['pindah_barang'] = $this->Logistik_model->getPindahBarang();
             $data['kodebarang'] = $this->Logistik_model->getKodeBarang();
+            $data['kodemtp'] = $this->Logistik_model->getKodeMtp();
+            $data['kodetempat'] = $this->Logistik_model->getKodeTempat();
+            $data['kodeunit'] = $this->Logistik_model->getKodeUnit();
             $data['pindahbarang'] = $this->Logistik_model->pindah();
             $data['judul'] = 'Admin';
             $this->load->view('templates/header2',$data);

@@ -110,19 +110,46 @@
                 <div class="form-group">
                     <div class="form-row">
                         <div class="col">
-                            <p style="margin-bottom:4px;">Tempat</p><input class="form-control" type="text" placeholder="Tempat" name="tempat"></div>
+                            <p style="margin-bottom:4px;">Tempat</p>
+                                <select class="form-control" name="tempat">
+                                <?php
+                                    foreach($kodetempat as $tempat):
+
+                                            echo '<option value="'.$tempat['lokasi'].'_'.$tempat['kode_lokasi'].'">'.$tempat['lokasi'].'</option>';
+                                    
+                                    endforeach;
+                                    
+                                    ?>
+                                </select>
+                            </div>
                         <div class="col">
-                            <p style="margin-bottom:4px;">Kode Ruang</p><input class="form-control" type="text" placeholder="Kode Ruang" name="kode_lokasi"></div>
+                            <p style="margin-bottom:4px;">Nama Akun</p>
+                                <select class="form-control" name="akun">
+                                <?php
+                                    foreach($kodemtp as $mtp):
+                                        if($mtp['kode_mtp'] != null)
+                                        {
+                                            echo '<option value="'.$mtp['akun'].'_'.$mtp['kode_mtp'].'">'.$mtp['akun'].'</option>';
+                                        }
+                                    endforeach;
+                                    
+                                    ?>
+                                </select>
+                            </div>
                         <div class="col">
-                            <p style="margin-bottom:4px;">Nama Unit</p><input class="form-control" type="text" placeholder="Nama Unit" name="nama_unit"></div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="form-row">
-                        <div class="col">
-                            <p style="margin-bottom:4px;">Nomor Urut Barang</p><input class="form-control" type="text" placeholder="Nomor Urut Barang" name="nomor_urut"></div>
-                        <div class="col">
-                            <p style="margin-bottom:4px;">Nomor MTP</p><input class="form-control" type="text" placeholder="Nomor MTP" name="nomor_mtp"></div>
+                            <p style="margin-bottom:4px;">Nama Unit</p>
+                                <select class="form-control" name="unit">
+                                <?php
+                                    foreach($kodeunit as $unit):
+                                        if($unit['kode_unit'] != null)
+                                        {
+                                            echo '<option value="'.$unit['nama'].'_'.$unit['kode_unit'].'">'.$unit['nama'].'</option>';
+                                        }
+                                    endforeach;
+                                    
+                                    ?>
+                                </select>
+                            </div>
                     </div>
                 </div>
                 <div class="form-group">

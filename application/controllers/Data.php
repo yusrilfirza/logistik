@@ -9,6 +9,7 @@ class Data extends CI_Controller {
 
     public function index()
     {
+        
         if($this->session->userdata('admin'))
         {
             $data['peminjaman'] = $this->Logistik_model->getPinjam();
@@ -19,6 +20,7 @@ class Data extends CI_Controller {
         }
         else 
         {
+            // $this->Logistik_model->aa();
             redirect('home');
         }
     }
