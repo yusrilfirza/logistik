@@ -251,61 +251,63 @@ class Logistik_model extends CI_model {
 
     public function aa()
     {
-
+        $data = array("MKT", "SOL", "RR2", "RR6", "RDR", "401", "402", "403", "404", "405", "406", "507", "UKM", "LTF", "LTC");
+        $data2 = array("RUANG MARKETING", "RUANG SOLUTION", "RUANG RAPAT R2", "RUANG RAPAT R6", "RUANG DIREKTUR", "RUANG ", "RUANG ", "RUANG ", "RUANG ", "RUANG ", "RUANG ", "RUANG ", "RUANG UKM", "LABORATORIUM TIFO", "LABORATORIUM TEST CENTER");
         $i=0;
         foreach ($data as $row)
         {
-            $this->db->where('kode_lokasi', $data5[$i]);
-            $query = $this->db->get('kodetempat');
-            $hasil = $query->result_array();
-            $tempat = '';
-            if($data5[$i]=='4FO')
-            {
-                $tempat='Fiber Optik';
-            }
-            if($data5[$i]=='401')
-            {
-                $tempat='Ruangan 401';
-            }
-            if($data5[$i]=='4GR')
-            {
-                $tempat = 'Graphic Room';
-            }
-            else
-            {
-                foreach($hasil as $h)
-                {
-                    $tempat=$h['lokasi'];
-                }
-            }
-            if($data10[$i]=='101')
-            {
-                $data3[$i]="PC";
-            }
-            if($data10[$i]=='160')
-            {
-                $data3[$i]="MIC";
-            }
-            if($data10[$i]=='224')
-            {
-                $data3[$i]="CCTV";
-            }
-            $this->db->where('kode_lokasi', $data5[$i]);
-            $this->db->insert("barang", array(
-                // 'kode_barang'=>$row, 
-                'nomor_urut'=>$data2[$i],
-                'nama_barang'=>$data3[$i],
-                'spesifikasi'=>$data4[$i],
-                'kode_lokasi'=>$data5[$i],
-                'kode_unit'=>$data6[$i],
-                'kode_tahun'=>$data7[$i],
-                'kode_inventaris'=>$data8[$i],
-                'nomor_mtp'=>$data9[$i],
-                'tempat'=>$tempat,
-                'kode_barang'=>$data10[$i]
+            // $this->db->where('kode_lokasi', $data5[$i]);
+            // $query = $this->db->get('kodetempat');
+            // $hasil = $query->result_array();
+            // $tempat = '';
+            // if($data5[$i]=='4FO')
+            // {
+            //     $tempat='Fiber Optik';
+            // }
+            // if($data5[$i]=='401')
+            // {
+            //     $tempat='Ruangan 401';
+            // }
+            // if($data5[$i]=='4GR')
+            // {
+            //     $tempat = 'Graphic Room';
+            // }
+            // else
+            // {
+            //     foreach($hasil as $h)
+            //     {
+            //         $tempat=$h['lokasi'];
+            //     }
+            // }
+            // if($data10[$i]=='101')
+            // {
+            //     $data3[$i]="PC";
+            // }
+            // if($data10[$i]=='160')
+            // {
+            //     $data3[$i]="MIC";
+            // }
+            // if($data10[$i]=='224')
+            // {
+            //     $data3[$i]="CCTV";
+            // }
+           
+            $this->db->insert("kodetempat", array(
+                'kode_lokasi'=>$row, 'lokasi'=>$data2[$i]
+                // // 'kode_barang'=>$row, 
+                // 'nomor_urut'=>$data2[$i],
+                // 'nama_barang'=>$data3[$i],
+                // 'spesifikasi'=>$data4[$i],
+                // 'kode_lokasi'=>$data5[$i],
+                // 'kode_unit'=>$data6[$i],
+                // 'kode_tahun'=>$data7[$i],
+                // 'kode_inventaris'=>$data8[$i],
+                // 'nomor_mtp'=>$data9[$i],
+                // 'tempat'=>$tempat,
+                // 'kode_barang'=>$data10[$i]
                 ));
             $i=$i+1;
         }
-        return $hasil;
+        // return $hasil;
     }
 }
