@@ -12,7 +12,7 @@
                 </div>
             </form>
             <div class="table-responsive">
-                <table class="table table-striped" id="table_id">
+                <table class="table table-striped" id="table_id3">
                     <thead>
                         <tr>
                             <th>Kode Inventaris</th>
@@ -71,7 +71,7 @@
                 </div>
             </form>
             <div class="table-responsive">
-                <table class="table table-striped" id="table_id2">
+                <table class="table table-striped" id="table_id1">
                     <thead>
                         <tr>
                             <th>Kode Barang</th>
@@ -199,7 +199,7 @@
                 <?php echo validation_errors();?>
                 <div class="form-group">
                     <div class="table-responsive" style="padding:0px;">
-                        <table class="table table-striped" id="table_id3">
+                        <table class="table table-striped" id="table_id">
                             <thead>
                                 <tr>
                                     <th style="width:132px;">Kode Inventaris</th>

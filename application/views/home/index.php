@@ -52,7 +52,7 @@
                 <div class="form-group d-flex"></div>
                 <div class="form-group">
                     <div class="table-responsive" style="padding:0px;">
-                        <table class="table table-striped" id="table_id1">
+                        <table class="table table-striped" id="table_id">
                             <thead style="background-color: #a3a3a3">
                                 <tr>
                                     <th style="width:132px;">Kode Inventaris</th>
